@@ -1,4 +1,4 @@
-package cn.sh.obeserver;
+package cn.sh.observer;
 
 /**
  * @author sh

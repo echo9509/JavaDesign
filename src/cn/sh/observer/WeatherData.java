@@ -1,4 +1,4 @@
-package cn.sh.obeserver;
+package cn.sh.observer;
 
 
 import java.util.Vector;
@@ -19,7 +19,9 @@ public class WeatherData implements Subject {
      */
     @Override
     public void addObserver(Observer observer) {
-        observerList.add(observer);
+        if (!observerList.contains(observer)) {
+            observerList.add(observer);
+        }
     }
 
     /**
