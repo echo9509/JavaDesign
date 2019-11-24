@@ -12,8 +12,6 @@ public abstract class BaseBeverage {
 
     protected BigDecimal cost;
 
-    pfo
-
     /**
      * 饮料价格抽象方法
      * @return 价格
