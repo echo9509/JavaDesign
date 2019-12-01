@@ -1,7 +1,5 @@
 package cn.sh.command;
 
-import java.util.Arrays;
-
 /**
  * @author sh
  */
