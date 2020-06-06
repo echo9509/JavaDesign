@@ -1,4 +1,4 @@
-package com.reactor.signlethread;
+package com.reactor.singlethread;
 
 import java.io.IOException;
 import java.nio.channels.SelectionKey;

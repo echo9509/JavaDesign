@@ -1,4 +1,4 @@
-package com.reactor.signlethread;
+package com.reactor.singlethread;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -19,15 +19,15 @@ public class RectorServer {
         this.selector = Selector.open();
         ServerSocketChannel channel = ServerSocketChannel.open();
         channel.configureBlocking(false);
-        channel.bind(new InetSocketAddress(port));
-        AcceptHandler acceptHandler = new AcceptHandler(selector);
+        channel.socket().bind(new InetSocketAddress(port));
+        AcceptHandler acceptHandler = new AcceptHandler(this.selector);
         SelectionKey acceptKey = channel.register(this.selector, SelectionKey.OP_ACCEPT);
         acceptKey.attach(acceptHandler);
     }
 
     public void run() throws IOException {
         while (!Thread.interrupted()) {
-            int select = selector.select();
+            selector.select();
             Set<SelectionKey> readyHandlers = selector.selectedKeys();
             Iterator<SelectionKey> handlerIterator = readyHandlers.iterator();
             while (handlerIterator.hasNext()) {
@@ -37,5 +37,10 @@ public class RectorServer {
             }
             readyHandlers.clear();
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+        RectorServer server = new RectorServer(8080);
+        server.run();
     }
 }
