@@ -9,11 +9,12 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
+ * 单Reactor单线程
  * @author sh
  */
 public class RectorServer {
 
-    private Selector selector;
+    private final Selector selector;
 
     public RectorServer(int port) throws IOException {
         this.selector = Selector.open();

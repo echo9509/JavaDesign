@@ -11,13 +11,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * 单Reactor多线程
  * @author sh
  */
 public class ReactorServer {
 
     public static final ExecutorService pool = Executors.newFixedThreadPool(100);
 
-    private Selector selector;
+    private final Selector selector;
 
     public ReactorServer(int port) throws IOException {
         this.selector = Selector.open();
