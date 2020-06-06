@@ -14,7 +14,7 @@ public class NioClient {
 
     public static void main(String[] args) {
         ExecutorService executors = Executors.newFixedThreadPool(500);
-        for (int i = 0; i < 2000; i++) {
+        for (int i = 0; i < 500; i++) {
             executors.submit(() -> {
                 try {
                     SocketChannel socketChannel = SocketChannel.open();
